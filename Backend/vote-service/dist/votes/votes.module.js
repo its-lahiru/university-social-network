@@ -6,20 +6,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.VotesModule = void 0;
 const common_1 = require("@nestjs/common");
+const votes_service_1 = require("./votes.service");
+const votes_controller_1 = require("./votes.controller");
 const mongoose_1 = require("@nestjs/mongoose");
-const app_properties_1 = require("./app.properties");
-const students_module_1 = require("./student/students.module");
-let AppModule = class AppModule {
+const Vote_schema_1 = require("./schema/Vote.schema");
+const Vote_repository_1 = require("./repository/Vote.repository");
+let VotesModule = class VotesModule {
 };
-AppModule = __decorate([
+VotesModule = __decorate([
     common_1.Module({
         imports: [
-            students_module_1.StudentModule,
-            mongoose_1.MongooseModule.forRoot(app_properties_1.DB_CONNECTION, { autoCreate: true }),
+            mongoose_1.MongooseModule.forFeature([{ name: Vote_schema_1.Vote.name, schema: Vote_schema_1.VoteSchema }]),
         ],
+        providers: [votes_service_1.VotesService, Vote_repository_1.VoteRepository],
+        controllers: [votes_controller_1.VotesController]
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], VotesModule);
+exports.VotesModule = VotesModule;
+//# sourceMappingURL=votes.module.js.map

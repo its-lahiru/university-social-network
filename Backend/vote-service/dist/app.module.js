@@ -10,13 +10,13 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const app_properties_1 = require("./app.properties");
-const students_module_1 = require("./student/students.module");
+const votes_module_1 = require("./votes/votes.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
         imports: [
-            students_module_1.StudentModule,
+            votes_module_1.VotesModule,
             mongoose_1.MongooseModule.forRoot(app_properties_1.DB_CONNECTION, { autoCreate: true }),
         ],
     })

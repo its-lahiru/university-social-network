@@ -6,18 +6,18 @@ export type VoteDocument = Vote & Document;
 
 @Schema()
 export class Vote {
-  @Prop({ required: true })
-  @IsString()
-  @IsNotEmpty()
-  userId: string;
+    @Prop({ required: true })
+    @IsString()
+    @IsNotEmpty()
+    userId: string;
 
-  @IsString()
-  @Prop()
-  upVotedStoryId: string;
+    @IsString()
+    @Prop()
+    upVotedStoryId: string;
 
-  @IsString()
-  @Prop()
-  downVotedStoryId: string;
+    @IsString()
+    @Prop()
+    downVotedStoryId: string;
 }
 
 export const VoteSchema = SchemaFactory.createForClass(Vote);

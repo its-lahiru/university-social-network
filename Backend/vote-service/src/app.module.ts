@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { DB_CONNECTION } from './app.properties';
+import { VotesModule } from './votes/votes.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    VotesModule,
+    MongooseModule.forRoot(DB_CONNECTION, { autoCreate: true }),
+  ],
 })
 export class AppModule {}
