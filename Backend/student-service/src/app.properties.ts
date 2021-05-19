@@ -1,0 +1,1 @@
+export const DB_CONNECTION = 'mongodb://localhost/usn';

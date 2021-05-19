@@ -1,0 +1,11 @@
+<div class="container">
+    <form [formGroup]="form" (submit)="submit(storyId)">
+        <div class="form-group">
+            <label>Update Story</label>
+            <!-- <input [value]="storyContent" formControlName="content" type="text" class="form-control" placeholder="Enter content"> -->
+            <textarea [value]="storyContent" formControlName="content" class="form-control" placeholder="Edit story" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Story</button>
+    </form>
+    <a class="btn btn-success" routerLink="/profile">Back to Profile</a>
+</div>

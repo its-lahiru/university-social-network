@@ -1,0 +1,19 @@
+<div class="container">
+
+    <div class="card">
+        <a class="btn btn-success" routerLink="/create-story">Create Story</a>
+    </div>
+
+    <usn-profile-updater></usn-profile-updater>
+
+    <br>
+    <h2>My Stories</h2>
+    <div class="border border-success rounded" *ngFor="let story of stories">
+        <p hidden>{{story.id}}</p>
+        <p class="font-weight-normal text-monospace ml-3 mt-3">{{story.content}}</p>
+        <p class="font-weight-lighter ml-3 mb-3">{{story.date}}</p>
+        <a routerLink="/update-story" (click)="updateStory(story.id)" class="btn btn-warning">Update</a>
+        <a (click)="deleteStory(story.id)" class="btn btn-danger">Delete</a>
+    </div>
+
+</div>

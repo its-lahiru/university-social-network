@@ -1,0 +1,10 @@
+import { Faculty } from "../user.model";
+export interface UpdateUserDto {
+    id: string;
+    firstName: string;
+    lastName: string;
+    faculty: Faculty;
+    email: string;
+    username: string;
+    password: string;
+}

@@ -1,0 +1,11 @@
+<div class="container">
+    <form [formGroup]="form" (submit)="submit(noticeId)">
+        <div class="form-group">
+            <label>Update Notice</label>
+            <input [value]="noticeContent" formControlName="content" type="text" class="form-control"
+                placeholder="Enter content">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Notice</button>
+    </form>
+    <a class="btn btn-success" routerLink="/notices">Back to Notices</a>
+</div>

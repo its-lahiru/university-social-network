@@ -1,0 +1,90 @@
+<div class="card">
+  <h2>My Details</h2>
+
+  <!-- show when form is enabled -->
+  <form (submit)="submit(userId)" [formGroup]="form" *ngIf="isEnabled">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">First Name</label>
+        <input formControlName="firstName" [value]="firstName" type="text" class="form-control" id="firstName"
+               placeholder="First Name" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">Last Name</label>
+        <input formControlName="lastName" [value]="lastName" type="text" class="form-control" id="lastName"
+               placeholder="Last Name" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div *ngIf="isEnabled" class="form-group col-md-6">
+        <label for="faculty">Faculty</label>
+        <select formControlName="faculty" id="faculty" class="form-control" required>
+          <option value="">--Please select your faculty--</option>
+          <option value="APPLIED_SCIENCES">Applied Sciences</option>
+          <option value="MANAGEMENT_STUDIES">Management Studies</option>
+          <option value="Social_SCIENCES">Social Sciences and Languages</option>
+          <option value="AGRICULTURE">Agriculture Sciences</option>
+          <option value="TECHNOLOGY">Technology</option>
+          <option value="MEDICAL">Medicine</option>
+          <option value="GEOMATICS">Geomaics</option>
+        </select>
+      </div>
+      <div *ngIf="!isEnabled" class="form-group col-md-6">
+        <label for="email">Faculty</label>
+        <input [value]="faculty" type="text" class="form-control" id="faculty" placeholder="someone@someone.com"
+               required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input formControlName="email" [value]="email" type="email" class="form-control" id="email"
+               placeholder="someone@someone.com" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="username">Username</label>
+        <input formControlName="username" [value]="username" type="text" class="form-control" id="username"
+               required>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-info">Submit</button>
+    <a routerLink="/" class="btn btn-success">Back to Home</a>
+    <a (click)="deleteProfile(userId)" class="btn btn-danger">Delete Profile</a>
+  </form>
+
+
+  <!-- show when form is disabled -->
+  <form *ngIf="!isEnabled">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">First Name</label>
+        <input disabled [value]="firstName" type="text" class="form-control" id="firstName"
+               placeholder="First Name" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">Last Name</label>
+        <input disabled [value]="lastName" type="text" class="form-control" id="lasttName"
+               placeholder="Last Name" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Faculty</label>
+        <input disabled [value]="faculty" type="text" class="form-control" id="faculty"
+               placeholder="someone@someone.com" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input disabled [value]="email" type="email" class="form-control" id="email"
+               placeholder="someone@someone.com" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="username">Username</label>
+        <input disabled [value]="username" type="text" class="form-control" id="username" required>
+      </div>
+    </div>
+    <a *ngIf="!isEnabled" (click)="enableFields()" class="btn btn-warning">Update Details</a>
+  </form>
+</div>

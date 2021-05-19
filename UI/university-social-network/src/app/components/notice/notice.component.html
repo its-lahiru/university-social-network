@@ -1,0 +1,14 @@
+<div class="container">
+
+    <div class="card">
+        <a class="btn btn-success" routerLink="/create-notice">Create Notice</a>
+    </div>
+    <div class="border border-primary rounded" *ngFor="let notice of notices">
+        <p hidden>{{notice.id}}</p>
+        <p class="font-weight-normal text-monospace ml-3 mt-3">{{notice.content}}</p>
+        <p class="font-weight-lighter ml-3 mb-3">{{notice.date}}</p>
+        <a routerLink="/update-notice" (click)="updateNotice(notice.id)" class="btn btn-warning">Update</a>
+        <a (click)="deleteNotice(notice.id)" class="btn btn-danger">Delete</a>
+    </div>
+
+</div>

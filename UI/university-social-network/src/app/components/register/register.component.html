@@ -1,0 +1,25 @@
+<main class="form-signin">
+    <form [formGroup]="registerForm" (submit)="submit()">
+        <h1 class="h3 mb-3 fw-normal">Please Register</h1>
+
+        <input formControlName="firstName" type="text" class="form-control" placeholder="First Name" required>
+        <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name" required>
+        <select formControlName="faculty" class="form-control" required>
+            <option value="">--Please select your faculty--</option>
+            <option value="APPLIED_SCIENCES">Applied Sciences</option>
+            <option value="MANAGEMENT_STUDIES">Management Studies</option>
+            <option value="SOCIAL_SCIENCES">Social Sciences and Languages</option>
+            <option value="AGRICULTURE_SCIENCES">Agriculture Sciences</option>
+            <option value="TECHNOLOGY">Technology</option>
+            <option value="MEDICAL">Medicine</option>
+            <option value="GEOMATICS">Geomatics</option>
+        </select>
+        <input formControlName="email" type="email" class="form-control" placeholder="Email" required>
+        <input formControlName="username" type="text" class="form-control" placeholder="Username" required>
+        <input formControlName="password" type="password" class="form-control" placeholder="Password" required>
+
+        <button [disabled]="!registerForm.valid" class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+    </form>
+
+    <p class="red-text">{{errorMessage}}</p>
+</main>
