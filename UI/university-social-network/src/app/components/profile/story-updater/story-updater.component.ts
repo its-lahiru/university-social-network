@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Emitters } from 'src/app/components/emitters/emitters';
+import { Story } from 'src/app/models/story.model';
+import { StoryService } from 'src/app/services/story.service';
 
 @Component({
   selector: 'usn-story-updater',
@@ -13,9 +15,11 @@ export class StoryUpdaterComponent implements OnInit {
 
   form!: FormGroup;
   storyContent!: string;
-  storyId!: string
+  storyId!: string;
+  story!: Story;
 
   constructor(
+    private storyService: StoryService,
     private router: Router,
     private httpClient: HttpClient,
     private formBuilder: FormBuilder
@@ -34,13 +38,13 @@ export class StoryUpdaterComponent implements OnInit {
     });
   }
 
-  submit(id: string): void {
-    this.httpClient.patch(`http://localhost:3030/api/stories/update/${id}`, this.form.getRawValue(), { withCredentials: true })
-      .subscribe(
-        () => {
-          this.router.navigate(['/profile']);
-        }
-      );
+  update(id: string): void {
+    this.story = this.form.getRawValue();
+    this.storyService.update(id, this.story).subscribe(
+      () => {
+        this.router.navigate(['/profile']);
+      }
+    );
   }
 
 }

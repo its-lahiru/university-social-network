@@ -12,9 +12,7 @@ import { CURRENT_DATE_TIME } from '../shared/CurrentDateTime.shared';
 
 @Injectable()
 export class StoryRepository {
-  constructor(
-    @InjectModel(Story.name) private storyModel: Model<StoryDocument>,
-  ) {}
+  constructor(@InjectModel(Story.name) private storyModel: Model<StoryDocument>) { }
 
   async create(data: any) {
     const newStory = new this.storyModel({

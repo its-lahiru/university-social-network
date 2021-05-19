@@ -21,4 +21,29 @@ export class StoryService {
     const url = `${this.apiUrl}/getAll`;
     return this.http.get<Story[]>(url, { withCredentials: true });
   }
+
+  delete(id: string) {
+    const url = `${this.apiUrl}/delete/${id}`;
+    return this.http.delete(url, { withCredentials: true });
+  }
+
+  getOne(id: string) {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get(url, { withCredentials: true });
+  }
+
+  update(id: string, story: Story): Observable<Story> {
+    const url = `${this.apiUrl}/update/${id}`;
+    return this.http.patch<Story>(url, story, { withCredentials: true });
+  }
+
+  getAllByAuthorId(authorId: string) {
+    const url = `${this.apiUrl}/getAll/${authorId}`;
+    return this.http.get<Story>(url, { withCredentials: true });
+  }
+
+  deleteStoriesByAuthorId(authorId: string) {
+    const url = `${this.apiUrl}/deleteByAuthorId/${authorId}`;
+    return this.http.delete(url, { withCredentials: true });
+  }
 }

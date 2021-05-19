@@ -22,27 +22,27 @@ let StudentsService = class StudentsService {
     async createStudent(data) {
         const pattern = { cmd: 'createStudent' };
         const payload = data;
-        return this.studentClient.send(pattern, payload).toPromise();
+        return this.studentClient.send(pattern, payload);
     }
     async getAllStudents() {
         const pattern = { cmd: 'findAllStudents' };
         const payload = 'getAll';
-        return this.studentClient.send(pattern, payload).toPromise();
+        return this.studentClient.send(pattern, payload);
     }
     async getStudentById(data) {
         const pattern = { cmd: 'findStudentById' };
         const payload = data;
-        return this.studentClient.send(pattern, payload).toPromise();
+        return this.studentClient.send(pattern, payload);
     }
     async updateStudent(data) {
         const pattern = { cmd: 'updateStudent' };
         const payload = data;
-        return this.studentClient.send(pattern, payload).toPromise();
+        return this.studentClient.send(pattern, payload);
     }
     async deleteStudent(id) {
         const pattern = { cmd: 'deleteStudent' };
         const payload = id;
-        return this.studentClient.send(pattern, payload).toPromise();
+        return this.studentClient.send(pattern, payload);
     }
 };
 StudentsService = __decorate([

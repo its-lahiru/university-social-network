@@ -1,7 +1,9 @@
-import {HttpClient} from '@angular/common/http';
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {Emitters} from '../emitters/emitters';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { StoryService } from 'src/app/services/story.service';
+import { Emitters } from '../emitters/emitters';
 
 @Component({
   selector: 'usn-profile',
@@ -14,7 +16,10 @@ export class ProfileComponent implements OnInit {
   authenticated = false;
   stories: any = [];
 
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private storyService: StoryService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -24,45 +29,30 @@ export class ProfileComponent implements OnInit {
       },
     );
 
-    this.httpClient.get('http://localhost:3000/api/currentUser', {withCredentials: true})
-      .subscribe(
-        (res: any) => {
-          Emitters.profileEmitter.emit(res);
-          const authorId = res.id;
-          this.httpClient.get(`http://localhost:3030/api/stories/getAll/${authorId}`, {withCredentials: true})
-            .subscribe(
-              (res: any) => {
-                this.stories = res;
-              },
-              (error) => {
-                console.log(error);
-              },
-            );
-        },
-      );
+    this.authService.getCurrentUser().subscribe(
+      (res: any) => {
+        Emitters.profileEmitter.emit(res);
+        const authorId = res.id;
+        this.storyService.getAllByAuthorId(authorId).subscribe(
+          (res: any) => {
+            this.stories = res;
+          }
+        );
+      },
+    );
   }
 
-  deleteStory(storyId: string): void {
-    this.httpClient.delete(`http://localhost:3030/api/stories/delete/${storyId}`, {withCredentials: true})
-      .subscribe(
-        (res) => {
-          this.router.navigate(['/']);
-        },
-        () => {
-          console.log('Story deletion failed!!');
-        }
-      );
+  deleteStory(id: string): void {
+    this.storyService.delete(id).subscribe(
+      () => this.router.navigate(['/']),
+    );
   }
 
-  updateStory(id: string): void {
-    this.httpClient.get(`http://localhost:3030/api/stories/${id}`, {withCredentials: true})
-      .subscribe(
-        (res: any) => {
-          Emitters.storyEmitter.emit(res);
-        },
-        () => {
-          console.log('Story retrieving failed!!');
-        },
-      );
+  getStory(id: string): void {
+    this.storyService.getOne(id).subscribe(
+      (res: any) => {
+        Emitters.storyEmitter.emit(res);
+      },
+    );
   }
 }

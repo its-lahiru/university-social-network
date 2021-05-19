@@ -12,7 +12,7 @@
         <p hidden>{{story.id}}</p>
         <p class="font-weight-normal text-monospace ml-3 mt-3">{{story.content}}</p>
         <p class="font-weight-lighter ml-3 mb-3">{{story.date}}</p>
-        <a routerLink="/update-story" (click)="updateStory(story.id)" class="btn btn-warning">Update</a>
+        <a routerLink="/update-story" (click)="getStory(story.id)" class="btn btn-warning">Update</a>
         <a (click)="deleteStory(story.id)" class="btn btn-danger">Delete</a>
     </div>
 

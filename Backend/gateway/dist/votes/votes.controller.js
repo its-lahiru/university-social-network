@@ -29,9 +29,7 @@ let VotesController = class VotesController {
         return await this.voteService.resetVote({ userId, storyId });
     }
     async getAllVoteDetailsByUserId(userId) {
-        const result = await this.voteService.getAllVotes(userId);
-        console.log(result);
-        return result;
+        return await this.voteService.getAllVotes(userId);
     }
 };
 __decorate([

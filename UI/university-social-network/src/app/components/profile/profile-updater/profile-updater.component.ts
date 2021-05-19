@@ -3,6 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Emitters } from 'src/app/components/emitters/emitters';
+import { Student } from 'src/app/models/student.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { StoryService } from 'src/app/services/story.service';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'usn-profile-updater',
@@ -10,6 +14,9 @@ import { Emitters } from 'src/app/components/emitters/emitters';
   styleUrls: ['./profile-updater.component.css']
 })
 export class ProfileUpdaterComponent implements OnInit {
+
+  student!: Student;
+  form!: FormGroup;
 
   userId!: string;
   firstName!: string;
@@ -21,11 +28,11 @@ export class ProfileUpdaterComponent implements OnInit {
   isEnabled = false;
   authenticated = false;
 
-  form!: FormGroup;
-
   constructor(
+    private storyService: StoryService,
+    private authService: AuthService,
+    private studentService: StudentService,
     private router: Router,
-    private httpClient: HttpClient,
     private formBuilder: FormBuilder,
   ) { }
 
@@ -61,53 +68,44 @@ export class ProfileUpdaterComponent implements OnInit {
   }
 
   submit(id: string): void {
-    this.httpClient.patch(`http://localhost:3030/api/students/update/${id}`, this.form.getRawValue(), { withCredentials: true })
-      .subscribe(
-        () => {
-          this.router.navigate(['/']);
-        },
-        () => {
-          console.log('Profile update failed!');
-        }
-      );
+    this.student = this.form.getRawValue();
+    this.studentService.update(id, this.student).subscribe(
+      () => {
+        this.router.navigate(['/']);
+      },
+      () => {
+        console.log('Profile update failed!');
+      }
+    );
   }
 
   // delete user profile
   deleteProfile(id: string) {
-    this.httpClient.delete(`http://localhost:3030/api/students/delete/${id}`, { withCredentials: true })
-      .subscribe(
-        () => {
-          this.deleteStoriesByAuthorId(id);
-          this.logout();
-          this.router.navigate(['/login']);
-        },
-        () => {
-          console.log('Profile deletion failed!');
-        }
-      );
+    this.studentService.delete(id).subscribe(
+      () => {
+        this.deleteStoriesByAuthorId(id);
+        this.logout();
+        this.router.navigate(['/login']);
+      },
+      () => {
+        console.log('Profile deletion failed!');
+      }
+    );
   }
 
   // after deleting profile user should be logged out
   logout(): void {
-    this.httpClient.post('http://localhost:3000/api/logout', {}, { withCredentials: true })
-      .subscribe(
-        () => {
-          this.authenticated = false;
-        }
-      );
+    this.authService.logout().subscribe(
+      () => (this.authenticated = false),
+    );
   }
 
   // if user deleted the associated stories should also delete
   deleteStoriesByAuthorId(authorId: string) {
-    this.httpClient.delete(`http://localhost:3030/api/stories/delete/${authorId}`, { withCredentials: true })
-      .subscribe(
-        () => {
-          this.router.navigate(['/login']);
-        },
-        () => {
-          console.log('Profile deletion failed!');
-        }
-      );
+    this.storyService.deleteStoriesByAuthorId(authorId).subscribe(
+      () => {
+        this.router.navigate(['/login']);
+      }
+    );
   }
-
 }

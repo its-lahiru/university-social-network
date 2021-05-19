@@ -2162,7 +2162,7 @@
         "affectsGlobalScope": false
       },
       "../src/story/repository/story.repository.ts": {
-        "version": "c5759ec70a3f70b35fda933dbd7ccf4514ba1e6a482e9aba2853c805f8388ecc",
+        "version": "06ef5a65e9cfd99971384a1ab41a7f856df0c168d1497831a5352535d0b674dc",
         "signature": "eac16807ae6301cc147841fc528bfaf86921b8605352d1fc9d7a0879ff6f985d",
         "affectsGlobalScope": false
       },

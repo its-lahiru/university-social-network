@@ -2707,7 +2707,7 @@
         "affectsGlobalScope": false
       },
       "../src/votes/votes.controller.ts": {
-        "version": "cac96fa2ee7b86d6541f6e1cdfb98e87bbf8b9b791b746e4cba238107bcde90e",
+        "version": "7f00eec953212146de4f7b2c55ff35be4187019efd5c355b0c93e5449dc43ef8",
         "signature": "7233a8466d76770dbe8cffebf6a5682816637ed6546215ad8e02d4f44ba098df",
         "affectsGlobalScope": false
       },

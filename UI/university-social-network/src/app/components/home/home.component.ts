@@ -19,10 +19,10 @@ export class HomeComponent implements OnInit {
   stories: Story[] = [];
   story!: Story;
 
+
   constructor(
     private authService: AuthService,
     private router: Router,
-    private httpClient: HttpClient,
     private storyService: StoryService) { }
 
   ngOnInit(): void {
@@ -39,7 +39,9 @@ export class HomeComponent implements OnInit {
       },
     );
 
-    this.storyService.getAll().subscribe((stories) => (this.stories = stories));
+    this.storyService.getAll().subscribe(
+      (stories) => (this.stories = stories)
+    );
   }
 
   // submitStory(story: Story) {

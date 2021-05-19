@@ -22,27 +22,27 @@ let NoticesService = class NoticesService {
     async createNotice(data) {
         const pattern = { cmd: 'createNotice' };
         const payload = data;
-        return this.noticeClient.send(pattern, payload).toPromise();
+        return this.noticeClient.send(pattern, payload);
     }
     async getAllNotices() {
         const pattern = { cmd: 'getAllNotices' };
         const payload = 'getAll';
-        return this.noticeClient.send(pattern, payload).toPromise();
+        return this.noticeClient.send(pattern, payload);
     }
     async deleteNoticeById(data) {
         const pattern = { cmd: 'deleteNoticeById' };
         const payload = data;
-        return this.noticeClient.send(pattern, payload).toPromise();
+        return this.noticeClient.send(pattern, payload);
     }
     async updateNotice(data) {
         const pattern = { cmd: 'updateNotice' };
         const payload = data;
-        return this.noticeClient.send(pattern, payload).toPromise();
+        return this.noticeClient.send(pattern, payload);
     }
     async getNoticeById(data) {
         const pattern = { cmd: 'getNoticeById' };
         const payload = data;
-        return this.noticeClient.send(pattern, payload).toPromise();
+        return this.noticeClient.send(pattern, payload);
     }
 };
 NoticesService = __decorate([

@@ -9,31 +9,31 @@ export class NoticesService {
     async createNotice(data: any) {
         const pattern = { cmd: 'createNotice' };
         const payload = data;
-        return this.noticeClient.send<any>(pattern, payload).toPromise();
+        return this.noticeClient.send<any>(pattern, payload);
     }
 
     async getAllNotices() {
         const pattern = { cmd: 'getAllNotices' };
         const payload = 'getAll';
-        return this.noticeClient.send<any>(pattern, payload).toPromise();
+        return this.noticeClient.send<any>(pattern, payload);
     }
 
     async deleteNoticeById(data: any) {
         const pattern = { cmd: 'deleteNoticeById' };
         const payload = data;
-        return this.noticeClient.send<any>(pattern, payload).toPromise();
+        return this.noticeClient.send<any>(pattern, payload);
     }
 
     async updateNotice(data: any) {
         const pattern = { cmd: 'updateNotice' };
         const payload = data;
-        return this.noticeClient.send<any>(pattern, payload).toPromise();
+        return this.noticeClient.send<any>(pattern, payload);
     }
 
     async getNoticeById(data: any) {
         const pattern = { cmd: 'getNoticeById' };
         const payload = data;
-        return this.noticeClient.send<any>(pattern, payload).toPromise();
+        return this.noticeClient.send<any>(pattern, payload);
     }
 
 }

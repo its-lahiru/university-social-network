@@ -26,11 +26,6 @@ export class StoriesController {
   // @UseGuards(JwtAuthGuard)
   @Get('api/stories/getAll')
   async getAllStories() {
-
-    // const result = await this.storyService.getAllStories();
-    // console.log(result);
-    // return result;
-
     return await this.storyService.getAllStories();
   }
 
@@ -46,17 +41,16 @@ export class StoriesController {
     return await this.storyService.getStoriesByAuthorId(authorId);
   }
 
-  // get story by author id
-  @Delete('api/stories/delete/:authorId')
-  async deleteStoriesByAuthorId(@Param('authorId') authorId: string) {
-    return await this.storyService.deleteStoriesByAuthorId(authorId);
-  }
-
   // delete story by story id
   @Delete('api/stories/delete/:storyId')
-  // @HttpCode(204)
   async deleteStoryById(@Param('storyId') storyId: string) {
     return await this.storyService.deleteStoryById(storyId);
+  }
+
+  // delete stories by author id
+  @Delete('api/stories/deleteByAuthorId/:authorId')
+  async deleteStoriesByAuthorId(@Param('authorId') authorId: string) {
+    return await this.storyService.deleteStoriesByAuthorId(authorId);
   }
 
   // update story

@@ -37,11 +37,11 @@ let StoriesController = class StoriesController {
     async getStoriesByAuthorId(authorId) {
         return await this.storyService.getStoriesByAuthorId(authorId);
     }
-    async deleteStoriesByAuthorId(authorId) {
-        return await this.storyService.deleteStoriesByAuthorId(authorId);
-    }
     async deleteStoryById(storyId) {
         return await this.storyService.deleteStoryById(storyId);
+    }
+    async deleteStoriesByAuthorId(authorId) {
+        return await this.storyService.deleteStoriesByAuthorId(authorId);
     }
     async updateStory(id, content, upVotes, downVotes) {
         return await this.storyService.updateStory({ id, content, upVotes, downVotes });
@@ -75,19 +75,19 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], StoriesController.prototype, "getStoriesByAuthorId", null);
 __decorate([
-    common_1.Delete('api/stories/delete/:authorId'),
-    __param(0, common_1.Param('authorId')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], StoriesController.prototype, "deleteStoriesByAuthorId", null);
-__decorate([
     common_1.Delete('api/stories/delete/:storyId'),
     __param(0, common_1.Param('storyId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], StoriesController.prototype, "deleteStoryById", null);
+__decorate([
+    common_1.Delete('api/stories/deleteByAuthorId/:authorId'),
+    __param(0, common_1.Param('authorId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], StoriesController.prototype, "deleteStoriesByAuthorId", null);
 __decorate([
     common_1.Patch('api/stories/update/:id'),
     __param(0, common_1.Param('id')),

@@ -4,7 +4,7 @@ import { VotesService } from './votes.service';
 
 @Controller()
 export class VotesController {
-  constructor(private readonly voteService: VotesService) {}
+  constructor(private readonly voteService: VotesService) { }
 
   @Post('api/votes/saveUpVote/:userId')
   async saveUpVote(
@@ -33,9 +33,9 @@ export class VotesController {
   // @UseGuards(JwtAuthGuard)
   @Get('api/votes/getAllVotes/:userId')
   async getAllVoteDetailsByUserId(@Param('userId') userId: string) {
-    const result = await this.voteService.getAllVotes(userId);
-    console.log(result);
-    return result;
-    // return await this.studentService.getAllVotes(userId);
+    // const result = await this.voteService.getAllVotes(userId);
+    // console.log(result);
+    // return result;
+    return await this.voteService.getAllVotes(userId);
   }
 }

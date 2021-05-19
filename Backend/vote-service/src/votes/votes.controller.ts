@@ -54,6 +54,9 @@ export class VotesController {
     @MessagePattern({ cmd: 'getAllVotes' })
     async getAllVotesByUserId(@Body('userId') userId: string): Promise<Vote[]> {
         try {
+            // const votes = await this.votesService.getAllVotesByUserId(userId);
+            // console.log(votes);
+            // return votes;
             return await this.votesService.getAllVotesByUserId(userId);
         } catch (error) {
             console.log(`Votes retrieval is failed..`);

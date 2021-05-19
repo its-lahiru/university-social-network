@@ -22,22 +22,22 @@ let VotesService = class VotesService {
     async saveUpVote(data) {
         const pattern = { cmd: 'saveUpVote' };
         const payload = data;
-        return this.voteClient.send(pattern, payload).toPromise();
+        return this.voteClient.send(pattern, payload);
     }
     async saveDownVote(data) {
         const pattern = { cmd: 'saveDownVote' };
         const payload = data;
-        return this.voteClient.send(pattern, payload).toPromise();
+        return this.voteClient.send(pattern, payload);
     }
     async resetVote(data) {
         const pattern = { cmd: 'resetVote' };
         const payload = data;
-        return this.voteClient.send(pattern, payload).toPromise();
+        return this.voteClient.send(pattern, payload);
     }
     async getAllVotes(data) {
         const pattern = { cmd: 'getAllVotes' };
         const payload = data;
-        return this.voteClient.send(pattern, payload).toPromise();
+        return this.voteClient.send(pattern, payload);
     }
 };
 VotesService = __decorate([

@@ -25,7 +25,7 @@ export class StoryItemComponent implements OnInit {
     this.voteService.getAllVotes(userId).subscribe(
       (res: any) => {
         this.voteDetails = res;
-        console.log(this.voteDetails);
+        // console.log(this.voteDetails);
       },
     );
   }

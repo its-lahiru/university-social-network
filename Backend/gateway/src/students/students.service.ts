@@ -10,31 +10,31 @@ export class StudentsService {
   async createStudent(data: any) {
     const pattern = { cmd: 'createStudent' };
     const payload = data;
-    return this.studentClient.send<any>(pattern, payload).toPromise();
+    return this.studentClient.send<any>(pattern, payload);
   }
 
   async getAllStudents() {
     const pattern = { cmd: 'findAllStudents' };
     const payload = 'getAll';
-    return this.studentClient.send<any>(pattern, payload).toPromise();
+    return this.studentClient.send<any>(pattern, payload);
   }
 
   async getStudentById(data: any) {
     const pattern = { cmd: 'findStudentById' };
     const payload = data;
-    return this.studentClient.send<any>(pattern, payload).toPromise();
+    return this.studentClient.send<any>(pattern, payload);
   }
 
   async updateStudent(data: any) {
     const pattern = { cmd: 'updateStudent' };
     const payload = data;
-    return this.studentClient.send<any>(pattern, payload).toPromise();
+    return this.studentClient.send<any>(pattern, payload);
   }
 
   async deleteStudent(id: string) {
     const pattern = { cmd: 'deleteStudent' };
     const payload = id;
-    return this.studentClient.send<any>(pattern, payload).toPromise();
+    return this.studentClient.send<any>(pattern, payload);
   }
 
 
