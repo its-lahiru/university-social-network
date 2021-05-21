@@ -5,8 +5,7 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class VoteRepository {
-    constructor(@InjectModel(Vote.name) private voteModel: Model<VoteDocument>) {
-    }
+    constructor(@InjectModel(Vote.name) private voteModel: Model<VoteDocument>) { }
 
     async getAllVotesByUserId(userId: string): Promise<Vote[]> {
         const voteDetails = await this.voteModel.find({ userId: userId }).exec();
@@ -34,11 +33,7 @@ export class VoteRepository {
             return null;
         } else if (downVotedEntry) {
             // if down vote exists change it to null and save up vote
-            // const updateUpVote = new this.voteModel({
-            //   userId: data['userId'],
-            //   upVotedStoryId: data['storyId'],
-            //   downVotedStoryId: '',
-            // });
+            downVotedEntry.userId = data['userId'];
             downVotedEntry.downVotedStoryId = '';
             downVotedEntry.upVotedStoryId = data['storyId'];
             return await downVotedEntry.save();
@@ -69,11 +64,7 @@ export class VoteRepository {
             return null;
         } else if (upVotedEntry) {
             // if upvote exists change it to null and save down vote
-            // const updateDownVote = new this.voteModel({
-            //   userId: data['userId'],
-            //   upVotedStoryId: '',
-            //   downVotedStoryId: data['storyId'],
-            // });
+            upVotedEntry.userId = data['userId'];
             upVotedEntry.upVotedStoryId = '';
             upVotedEntry.downVotedStoryId = data['storyId'];
             return await upVotedEntry.save();

@@ -36,7 +36,7 @@ let AppController = class AppController {
     }
     async getUser(request) {
         try {
-            const cookie = request.cookies['jwt'];
+            const cookie = await request.cookies['jwt'];
             const data = await this.jwtService.verify(cookie);
             if (!data) {
                 throw new common_1.UnauthorizedException('Unauthorized user!!');

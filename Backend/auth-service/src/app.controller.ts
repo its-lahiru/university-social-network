@@ -22,9 +22,9 @@ export class AppController {
     @Body('password') password: string,
     @Res({ passthrough: true }) response: Response) {
     const user = await this.appService.findIdByUsernameAndPassword({ username, password });
-    
+
     if (user) {
-      const payload = { id: user['id'], username: user['username' ]}
+      const payload = { id: user['id'], username: user['username'] }
       const jwt = this.jwtService.sign(payload);
       response.cookie('jwt', jwt, { httpOnly: true });
       return {
@@ -38,12 +38,14 @@ export class AppController {
   @Get('api/currentUser')
   async getUser(@Req() request: Request) {
     try {
-      const cookie = request.cookies['jwt'];
+      const cookie = await request.cookies['jwt'];
       const data = await this.jwtService.verify(cookie);
       if (!data) {
         throw new UnauthorizedException('Unauthorized user!!');
       }
       const userId = data['id'];
+      // console.log(userId);
+      
       const user = await this.appService.findStudentById(userId);
       return user;
     } catch (e) {

@@ -41,6 +41,7 @@ let VoteRepository = class VoteRepository {
             return null;
         }
         else if (downVotedEntry) {
+            downVotedEntry.userId = data['userId'];
             downVotedEntry.downVotedStoryId = '';
             downVotedEntry.upVotedStoryId = data['storyId'];
             return await downVotedEntry.save();
@@ -67,6 +68,7 @@ let VoteRepository = class VoteRepository {
             return null;
         }
         else if (upVotedEntry) {
+            upVotedEntry.userId = data['userId'];
             upVotedEntry.upVotedStoryId = '';
             upVotedEntry.downVotedStoryId = data['storyId'];
             return await upVotedEntry.save();

@@ -233,8 +233,6 @@ export class StudentRepository {
     if (student) {
       const isMatch = await bcrypt.compare(data['password'], student.password);
       if (isMatch) {
-        // const { password, ...result } = student;
-        // return result;
         return student;
       } else {
         throw new BadRequestException('User not found! Invalid password..');

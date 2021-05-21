@@ -2022,12 +2022,12 @@
         "affectsGlobalScope": false
       },
       "../src/app.service.ts": {
-        "version": "703358c28283789d716db1ba376fdb803dae1db88b1fa799294936b0c6d2c70f",
-        "signature": "e271ffa70cbf5fb4ada7262e906c90f5fc04a69ede44bdc21c9c907669a0d515",
+        "version": "c6b4d399a2a62c260eb5e534f185e358b4db0615896c7e596c97b98d7e6840a8",
+        "signature": "2ed53100f14383176015b588cfd2f0312fd3ab104900fef21bcc8b5240a02e7c",
         "affectsGlobalScope": false
       },
       "../src/app.controller.ts": {
-        "version": "d5650422cbc98ed6fc74ff0e6c9084261533a2794ad41b8db47ba7b3b5a7e4bf",
+        "version": "05267bc797eefacf5669bde744c54cb9f044026c049d91afbcba2647e8bcc563",
         "signature": "00729dc0b6ffb129f4fd8d32afe5a803f7ddb9ebfb56f2efcbfd7c720f269198",
         "affectsGlobalScope": false
       },
@@ -5698,7 +5698,6 @@
         "../src/app.service.ts"
       ],
       "../src/app.service.ts": [
-        "../node_modules/@nestjs/jwt/index.d.ts",
         "../node_modules/@nestjs/microservices/index.d.ts"
       ],
       "../src/auth-guard/jwt-auth.guard.ts": [

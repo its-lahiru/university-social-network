@@ -14,12 +14,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
-const jwt_1 = require("@nestjs/jwt");
 const microservices_1 = require("@nestjs/microservices");
 let AppService = class AppService {
-    constructor(studentClient, jwtService) {
+    constructor(studentClient) {
         this.studentClient = studentClient;
-        this.jwtService = jwtService;
     }
     async findIdByUsernameAndPassword(data) {
         const pattern = { cmd: 'findUserByCredentials' };
@@ -29,13 +27,13 @@ let AppService = class AppService {
     async findStudentById(data) {
         const pattern = { cmd: 'findStudentById' };
         const payload = data;
-        return this.studentClient.send(pattern, payload).toPromise();
+        return this.studentClient.send(pattern, payload);
     }
 };
 AppService = __decorate([
     common_1.Injectable(),
     __param(0, common_1.Inject('STUDENT_SERVICE')),
-    __metadata("design:paramtypes", [microservices_1.ClientProxy, jwt_1.JwtService])
+    __metadata("design:paramtypes", [microservices_1.ClientProxy])
 ], AppService);
 exports.AppService = AppService;
 //# sourceMappingURL=app.service.js.map

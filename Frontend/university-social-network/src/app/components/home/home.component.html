@@ -1,0 +1,11 @@
+<div class="container">
+  <p class="badge badge-primary">{{ message }}</p>
+
+  <div class="card" *ngIf="authenticated">
+    <a class="btn btn-success" routerLink="/create-story">Create Story</a>
+  </div>
+
+  <div class="card" *ngFor="let story of stories">
+    <usn-story-item [story]="story"></usn-story-item>
+  </div>
+</div>
